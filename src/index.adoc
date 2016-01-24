@@ -179,4 +179,4 @@ github:: github.com/you
 
 [.inverse.subject]
 == !
-image::google-developers-logo-inverse.png[Google Developers,422,96,role=logo crux]
+image::google-developers-logo-inverse.svg[Google Developers,422,96,role=logo crux]
