@@ -1,0 +1,22 @@
+= Bespoke.js Emulating ioslides
+
+A http://markdalgleish.com/projects/bespoke.js[Bespoke.js] presentation that emulates the example presentation for https://code.google.com/p/io-2012-slides[ioslides].
+
+== View slides locally
+
+First, ensure you have the following installed:
+
+. https://www.ruby-lang.org[Ruby]
+. http://bundler.io[Bundler]
+
+ $ gem install bundler
+
+. https://nodejs.org[Node.js]
+. http://gulpjs.com[Gulp]
+
+ $ npm install -g gulp
+
+Then, install dependencies and run the preview server:
+
+ $ bundle && npm install
+ $ gulp serve

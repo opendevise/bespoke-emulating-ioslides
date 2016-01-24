@@ -1,0 +1,37 @@
+rem-calc(value)
+  ((u = unit(value)) is 'px') ? unit(round(value/16, 4), 'rem') : value
+
+$slide-width = 1100px
+$slide-height = 700px
+//$slide-margin = 20px
+$transition-onload = opacity 800ms ease-in 200ms
+$transition-slide = opacity 600ms ease-in-out
+$transition-build = opacity 500ms ease-in-out 200ms
+$transition-badge = background-size 500ms ease-out 500ms
+$transition-tada = opacity 600ms ease-in 1s
+$color-surface = #000
+$color-canvas = #fff
+$color-text = #797979
+$color-primary = #2a7cdf
+$color-title = #515151
+$color-ink = #000
+$color-dim = #e6e6e6
+$color-muted = #a9a9a9
+$color-accent = #4387fd
+$color-inverse = #fff
+$color-highlight = #ffd14d
+$sym-dblquote-left = "\201c"
+$sym-dblquote-right = "\201d"
+$sym-guillemet-left = "\00ab"
+$sym-guillemet-right = "\00bb"
+$sym-badge-icon = "\f121"
+$img-badge = url(../images/google-developers-icon.png)
+// workaround a bug in Chrome that causes a visual shift in the text after an animation
+// see http://stackoverflow.com/questions/28511539/the-underlying-magic-of-webkit-backface-visibility
+// NOTE backface-visibility and will-change cause very bad blurring of text
+// NOTE the blurring effect compounds if applied to nested elements
+// NOTE the blurring is slighly magnified when using em/rem font sizes (instead of px)
+webkit-transition-hack()
+  -webkit-transform translateZ(0)
+  -webkit-perspective 9999rem
+  //-webkit-transform-style preserve-3d

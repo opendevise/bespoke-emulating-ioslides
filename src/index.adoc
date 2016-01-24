@@ -1,0 +1,182 @@
+:title-opts: slice
+= A Demonstration of the{zwsp} ioslides Presentation Engine: As Emulated by Bespoke.js
+Author Name
+:position: Job Title
+:organization: ACME Inc.
+:imagesdir: images
+:sectids!:
+:experimental:
+:source-highlighter: prettify
+
+== Slide with Bullets
+* Titles are formatted as Open Sans with bold applied
+* The font size of titles is set at 45
+* Title capitalization is title case
+  - Subtitle capitalization is title case
+* Titles and subtitles should never have a period at the end
+
+== Slide with Bullets that Build: Subtitle Placeholder
+A list where items build:
+
+[%build]
+--
+[%build]
+* Pressing kbd:[h] highlights code snippets
+* Pressing kbd:[p] toggles speaker notes (if they're on the current slide)
+* Pressing kbd:[f] toggles fullscreen viewing
+* Pressing kbd:[w] toggles widescreen
+* Pressing kbd:[o] toggles overview mode
+* Pressing kbd:[ESC] toggles off these goodies
+--
+
+Another list, but items fade as they build:
+
+[%build.fade]
+* Hover over me!
+* Hover over me!
+* Hover over me!
+
+[.compact]
+== Slide with Smaller Font
+* All http://google.com[links] open in new tabs.
+* To change that behavior, add `target="_self"` to the link.
+
+== Code Slide (with Subtitle Placeholder): Subtitle Placeholder
+Press kbd:[h] to highlight important sections of code (wrapped in `<b>`).
+
+[source,html]
+----
+include::listings/hello-world-script.html[tag=outer]
+----
+
+[.compact]
+== Code Slide (Smaller Font)
+[source,javascript]
+----
+include::listings/hello-world-script.html[tag=inner,indent=0]
+----
+
+[source,html]
+----
+include::listings/style-element.html[]
+----
+
+[source,html]
+----
+include::listings/my-awesome-page.html[]
+----
+
+== Slide with Speaker Notes
+Press kbd:[p] to toggle speaker notes.
+
+[.cue]
+****
+include::transcript.adoc[tag=speaker-notes]
+****
+
+== Presenter Mode
+Add `link:?presentme=true[]` to the URL to enabled presenter mode.
+This setting is sticky, meaning refreshing the page will persist presenter mode.
+
+Hit `link:?presentme=false[]` to disable presenter mode.
+
+[.cue]
+****
+include::transcript.adoc[tag=presenter-mode]
+****
+
+== Slide with Image
+image::piechart.png[Pie chart description,654,419,role=reflect,credit="source: place source info here"]
+
+== Slide with Image (Centered horz/vert)
+image::barchart.png[Bar chart description,697,299,role=crux,credit="source: place source info here"]
+
+== Table Option A: Subtitle Placeholder
+[%header%autowidth.spread]
+|===
+ |      |Column 1     |Column 2    |Column 3    |Column 4
+s|Row 1 |placeholder v|placeholder |placeholder |placeholder
+s|Row 2 |placeholder  |placeholder |placeholder |placeholder
+s|Row 3 |placeholder  |placeholder |placeholder |placeholder
+s|Row 4 |placeholder  |placeholder |placeholder |placeholder
+s|Row 5 |placeholder  |placeholder |placeholder |placeholder
+|===
+
+[.compact]
+== Table Option A (Smaller Text): Subtitle Placeholder
+[%header%autowidth.spread]
+|===
+ |      |Column 1     |Column 2    |Column 3    |Column 4
+s|Row 1 |placeholder v|placeholder |placeholder |placeholder
+s|Row 2 |placeholder  |placeholder |placeholder |placeholder
+s|Row 3 |placeholder  |placeholder |placeholder |placeholder
+s|Row 4 |placeholder  |placeholder |placeholder |placeholder
+s|Row 5 |placeholder  |placeholder |placeholder |placeholder
+|===
+
+== Table Option B: Subtitle Placeholder
+[.pivot.spread%autowidth,cols=4]
+|===
+h|Header 1 |placeholder v|placeholder |placeholder
+h|Header 2 |placeholder  |placeholder |placeholder
+h|Header 3 |placeholder  |placeholder |placeholder
+h|Header 4 |placeholder  |placeholder |placeholder
+h|Header 5 |placeholder  |placeholder |placeholder
+|===
+
+== Slide Styles
+[.columns-2.compact.float-group]
+--
+[.left]
+* class="red"
+* class="red2"
+* class="red3"
+* class="blue"
+* class="blue2"
+* class="blue3"
+* class="green"
+* class="green2"
+
+[.left]
+* class="green3"
+* class="yellow"
+* class="yellow2"
+* class="yellow3"
+* class="gray"
+* class="gray2"
+* class="gray3"
+* class="gray4"
+--
+
+[.text-center]
+--
+[pass,subs=normal]
+I am centered text with a btn:[Button] and [.disabled]#btn:[Disabled]# button.
+--
+
+[.inverse.segue]
+== Segue Slide: Subtitle Placeholder
+
+== Full Image (with Optional Header)
+image::mountains.jpg[Mountains,1100,700,role=cover canvas,credit=unsplash.com/photos/PKVcQXEcfLU]
+[.credit.light]
+unsplash.com/photos/PKVcQXEcfLU
+
+[.inverse.segue.badge-right.badge-bottom]
+== !
+[quote.tada,Name,Company]
+This is an example of a quote.
+
+[.closing.segue.badge-right]
+== <Thank You!>
+Important contact information goes here.
+
+[horizontal.contact]
+g+:: plus.google.com/1234567890
+twitter:: @yourhandle
+www:: www.you.com
+github:: github.com/you
+
+[.inverse.subject]
+== !
+image::google-developers-logo-inverse.png[Google Developers,422,96,role=logo crux]

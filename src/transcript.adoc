@@ -1,0 +1,18 @@
+= Transcript
+
+== Speaker Notes
+// tag::speaker-notes[]
+* Point I wanted to make #1
+* Point I wanted to make #2
+* Point I wanted to make #3
+* Example link:#[link] in notes.
+
+*Remember to say this tag line!*
+// end::speaker-notes[]
+
+== Presenter Mode
+// tag::presenter-mode[]
+See this amazing link: http://www.google.com[link].
+
+*Remember to say this tag line!*
+// end::presenter-mode[]

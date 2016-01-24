@@ -1,0 +1,489 @@
+@import "./variables"
+@import "./fonts.css"
+@import "normalizecss/normalize.css"
+
+*, ::before, ::after { box-sizing: inherit }
+
+html
+  box-sizing border-box
+  font-size 16px // normalize the base font size (at least during testing)
+  quotes $sym-dblquote-left $sym-dblquote-right
+  &:lang(fr)
+    quotes $sym-guillemet-left $sym-guillemet-right
+
+body
+  background-color $color-surface // paint surface before onload transition is complete
+
+a
+  color $color-primary
+  text-decoration none
+  border-bottom 1px solid rgba(42, 124, 223, 0.5)
+
+::selection
+  color $color-inverse
+  background-color $color-highlight
+
+aside[role=note] { display: none }
+figure { margin: 0 }
+img { vertical-align: middle }
+p { margin: 0 0 1em 0 }
+.text-center { text-align: center }
+
+.deck
+  counter-reset slide
+  background-color $color-surface
+  font-family "Open Sans", sans-serif
+  font-size rem-calc(26px)
+  line-height 1
+  color $color-text
+  font-feature-settings "kern" 1
+  text-rendering optimizeLegibility
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  // hide deck and slide content until Bespoke.js classes have been added
+  &:not(.bespoke-parent), section:not(.bespoke-slide)
+    display none
+  opacity 0 // to fade in presentation
+  transition $transition-onload
+  body.loaded &
+    opacity 1 // fade in presentation
+
+.bespoke-parent, .bespoke-scale-parent
+  position absolute
+  top 0
+  right 0
+  bottom 0
+  left 0
+
+.bespoke-parent
+  overflow hidden // QUESTION why not on .deck?
+
+.bespoke-scale-parent, .bespoke-slide, .bespoke-slide-canvas
+  pointer-events none
+
+.bespoke-slide, .bespoke-slide-canvas
+  position absolute
+  top 50%
+  left 50%
+  width $slide-width
+  margin-left -(@width / 2)
+  height $slide-height
+  margin-top -(@height / 2)
+  background linear-gradient(to bottom, $color-canvas 85%, $color-dim)
+  background-color $color-canvas
+  border-radius 5px
+
+.bespoke-slide
+  overflow hidden
+  padding rem-calc(40px) rem-calc(60px)
+  opacity 0 // force opacity to start at 0 to avoid transition on load when using bespoke-scale
+  transition $transition-slide
+
+.bespoke-active
+  pointer-events auto
+  opacity 1
+  z-index 1 // Webkit requires z-index to be 1 for elements to receive focus (may no longer apply)
+
+.bespoke-bullet
+  &-inactive
+    opacity 0
+    pointer-events none
+  &-active
+    transition $transition-build // on enter only
+    &:not(.bespoke-bullet-current) // TODO .bespoke-bullet-past would fit here
+      .fade &
+        opacity 0.3
+      .vanish &
+        opacity 0
+
+h1, h2, h3
+  margin 0
+
+h1, h2
+  font-weight 600
+  color $color-title
+  .line
+    display block
+
+h1
+  font-size rem-calc(65px)
+  letter-spacing rem-calc(-3px)
+  line-height 1.4
+
+h2
+  font-size rem-calc(45px)
+  letter-spacing rem-calc(-2px)
+  line-height 1
+
+h3
+  font-size rem-calc(30px)
+  font-weight inherit
+  letter-spacing rem-calc(-1px)
+  line-height 2
+
+header, :not(header) > h2
+  margin-bottom rem-calc(45px)
+
+.columns-2
+  display flex
+  > *
+    flex 0 0 50%
+
+code, pre
+  font-family "Source Code Pro", monospace
+
+code:not([data-lang])
+  font-size 0.95em
+  color $color-ink
+
+pre
+  color $color-ink
+  background-color $color-dim
+  font-size rem-calc(20px)
+  letter-spacing rem-calc(-1px)
+  line-height rem-calc(28px)
+  margin 0 0 rem-calc(20px) rem-calc(-60px)
+  position relative
+  > code[data-lang]
+    display block
+    background inherit
+    padding rem-calc(10px) 0 rem-calc(10px) rem-calc(60px)
+    &::after
+      content attr(data-lang)
+      background-color $color-muted
+      position absolute
+      top 0
+      right 0
+      font-size 1.25rem
+      color $color-inverse
+      padding rem-calc(2px) rem-calc(25px)
+      text-transform uppercase
+
+.bespoke-slide.title, .bespoke-slide.segue
+  padding rem-calc(60px) rem-calc(120px)
+
+.bespoke-slide.title
+  header
+    position absolute
+    bottom rem-calc(180px)
+    margin-bottom 0
+  h2
+    color $color-muted
+    font-size rem-calc(34px)
+    font-weight inherit
+  footer
+    // technically footer should flow below header
+    position absolute
+    bottom rem-calc(80px)
+    font-size rem-calc(20px)
+    margin-top 2em
+    p.author
+      margin 0
+      line-height 1.3
+
+.affiliation
+  &::before
+    content " - "
+  .position:not(:last-child)::after
+    content ", "
+
+.bespoke-slide.inverse
+  color $color-dim
+  background $color-title
+  h1, h2, h3
+    color $color-inverse
+
+.bespoke-slide.segue
+  header
+    position absolute
+    bottom rem-calc(225px)
+    margin-bottom 0
+  h2, h3
+    color $color-dim
+  h2
+    font-size rem-calc(60px)
+    line-height 0.75
+  h3
+    line-height 2.8 
+
+.bespoke-slide.segue header, .tada
+  opacity 0
+  /.bespoke-active
+    &.segue header, .tada
+      opacity 1
+      transition $transition-tada
+
+// QUESTION what about h3?
+.bespoke-slide.image h2
+  color $color-inverse
+
+.bespoke-slide.closing
+  background $color-accent
+  color $color-inverse
+  display flex
+  flex-direction column
+  justify-content center
+  h2
+    color inherit
+    margin-bottom rem-calc(53.3333px)
+    + p
+      font-size rem-calc(26.6667px)
+      &:last-of-type
+        margin-bottom 0
+  .contact
+    position absolute
+    bottom rem-calc(80px)
+    font-size rem-calc(32px)
+    line-height 1.3
+    table
+      border none
+    td, p
+      font-size inherit
+    td
+      padding 0
+      &.hdlist1
+        width rem-calc(115px)
+    p
+      margin 0
+
+ol, ul
+  list-style none
+  padding 0
+
+ul
+  margin 0 0 1em 1.2em
+  position relative
+  li
+    margin-bottom 0.5em
+    &::before
+      content "\00b7"
+      margin-left -1em
+      position absolute
+      font-weight 600
+    ul li::before
+      content "\002d"
+  ul
+    margin 0.5em 0 0 2em
+
+figure.reflect img
+  -webkit-box-reflect below 3px -webkit-linear-gradient(transparent 85%, white 150%)
+
+figure.image.crux
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  height 100%
+  h2 + &
+    height 80%
+
+figure.quote
+  height 100%
+  display flex
+  flex-direction column
+  justify-content center
+
+blockquote
+  margin 0
+  font-size rem-calc(45px)
+  line-height 1.6
+  p:first-of-type::before
+    content open-quote
+    position absolute
+    margin-left -0.5em
+  p:last-of-type
+    margin-bottom 0
+  p:last-of-type::after
+    content close-quote
+    position absolute
+    margin-right 0.1em
+  + figcaption
+    font-size rem-calc(24px)
+    position absolute
+    bottom rem-calc(80px)
+    line-height 1.4
+    cite
+      font-style normal
+      display block
+
+table
+  border-spacing 2px
+  border-bottom 1px solid $color-text
+  border-collapse initial
+  &.pivot
+    border-bottom 0
+    border-right 1px solid $color-text
+  &.spread
+    width 100%
+  colgroup + tbody tr:nth-child(odd), thead + tbody tr:nth-child(even)
+    background-color $color-dim
+  th, td
+    font-size rem-calc(18px)
+    padding 1em 0.5em
+  th
+    text-align left
+    color $color-inverse
+    background linear-gradient(to bottom, $color-accent 40%, #2a7cdf 80%)
+    background-repeat no-repeat
+  strong
+    color $color-title
+  p.tableblock
+    margin 0
+    font-size inherit
+    line-height inherit
+  .verse
+    color $color-title
+    position relative
+    top 0
+    left 0
+    margin -1em -0.5em
+    padding inherit
+    background linear-gradient(to bottom, $color-highlight 40%, #f6c000 80%)
+    background-repeat no-repeat
+
+p.credit, small.credit
+  font-size rem-calc(14px)
+  color $color-muted
+  position absolute
+  bottom rem-calc(70px)
+  left rem-calc(60px)
+  margin 0
+  // FIXME shouldn't color be implied by setting on slide (.inverse)?
+  &.light
+    color $color-inverse
+
+kbd
+  font-family inherit
+  &::before, &::after
+    content "'"
+
+b.button
+  display inline-block
+  color $color-ink
+  background linear-gradient(#f9f9f9 40%, #e3e3e3 70%)
+  font-weight inherit
+  border 1px solid $color-muted
+  border-radius 3px
+  padding rem-calc(5px) rem-calc(8px)
+  white-space nowrap
+  text-shadow 1px 1px #fff
+  font-size 0.5em
+  vertical-align middle
+  .disabled &
+    color $color-muted
+
+.compact
+  pre
+    font-size rem-calc(15px)
+    line-height 1.3333
+    letter-spacing 0
+  p:not(.tableblock), ul
+    font-size rem-calc(20px)
+    line-height 1.2
+    letter-spacing 0
+  table td, table th
+    font-size rem-calc(14px)
+
+.bespoke-slide.title::before, .bespoke-slide.segue::before
+  // <icon font>
+  //content $sym-badge-icon
+  //font-family "FontAwesome"
+  //font-size rem-calc(80px)
+  //font-weight bold
+  //color $color-accent
+  //background-image linear-gradient(to left, $color-dim, $color-dim)
+  //background-position left
+  //background-size 0% 100%
+  // </icon font>
+  // <image>
+  content ""
+  background-image $img-badge, linear-gradient(to left, $color-dim, $color-dim)
+  background-size 85px 85px, 0% 100%
+  background-position right 15px center, left top
+  // </image>
+  background-repeat no-repeat
+  padding-right 1rem
+  position absolute
+  top rem-calc(125px)
+  left 0
+  width rem-calc(215px)
+  height rem-calc(97px)
+  border-radius 0 10px 10px 0
+  display flex
+  align-items center
+  justify-content flex-end
+  transition $transition-badge
+.bespoke-slide.badge-right::before
+  top rem-calc(254px)
+  right 0
+  left initial
+  border-radius 10px 0 0 10px
+  // <icon font>
+  //background-position right
+  // </icon font>
+  // <image>
+  background-position 15px center, right top
+  // </image>
+.bespoke-slide.badge-bottom::before
+  top initial
+  bottom rem-calc(60px)
+.bespoke-active.title::before, .bespoke-active.segue::before
+  // <icon font>
+  //background-size 100% 100%
+  // </icon font>
+  // <image>
+  background-size 85px 85px, 100% 100%
+  // </image>
+
+.bespoke-slide
+  &::after
+    visibility hidden
+    content counter(slide) "/" attr(data-slide-count)
+    counter-increment slide
+    font-size rem-calc(16px)
+    position absolute
+    bottom rem-calc(20px)
+    right rem-calc(60px)
+    line-height 1.9
+  &:not(.title):not(.segue):not(.image):not(.subject)::after
+    visibility visible
+
+.prettyprint
+  .str, .atv { color: #009f5d }
+  .kwd, .tag { color: #0066cc }
+  .com { color: #797979; font-style: italic }
+  .lit { color: #7f0000 }
+  .pun, .opn, .clo { color: #515151 }
+  .typ, .atn, .dec, .var { color: #d94d3a }
+  .pln { color: #515151 }
+
+.bespoke-overview
+  -ms-overflow-style none // hide visible scrollbar in IE 10+
+  &::-webkit-scrollbar // hide visible scrollbar in WebKit
+    width 0
+  .bespoke-slide-canvas
+    display none
+  .bespoke-slide
+    border-radius 0
+    &.segue header, .tada
+      opacity 1
+  //.bespoke-inactive
+  //  opacity 0.5
+  .bespoke-active
+    outline-color $color-highlight
+  //.bespoke-bullet
+  //  transition none
+  //  opacity 1 !important // NOTE the built-in rule in bespoke-overview is being overrridden
+  // NOTE for now, use some opacity change until bullets are skipped in side-to-side slide navigation
+  .bespoke-bullet
+    transition none
+    opacity 0.75 // NOTE the built-in rule in bespoke-overview is being overrridden
+  .bespoke-bullet-active
+    opacity 1
+.bespoke-overview-to .bespoke-slide, .bespoke-overview-from .bespoke-slide
+  transition none
+
+.bespoke-scale-parent
+  //.bespoke-bullet-active,
+  .bespoke-slide, .bespoke-active.segue header, .bespoke-active .tada
+    webkit-transition-hack()
