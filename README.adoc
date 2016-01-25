@@ -11,7 +11,7 @@ Using Bespoke.js has the following advantages over the original ioslides present
 
 * 14K of minified JavaScript down from > 70K in ioslides
 * 13K of minified CSS (generated from Stylus instead of Sass) down from 52K in ioslides
-* Semantic HTML generated from only 8K (< 200 lines) of AsciiDoc
+* Semantic HTML generated from only 8K (< 200 lines) of link:src/index.adoc[AsciiDoc]
 * Scales to fit any screen resolution (a major shortcoming of ioslides)
 * A more powerful and efficient overview mode
 * Configurable content builds
