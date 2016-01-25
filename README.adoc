@@ -3,7 +3,7 @@
 A http://markdalgleish.com/projects/bespoke.js[Bespoke.js] presentation that emulates the example presentation for https://code.google.com/p/io-2012-slides[ioslides].
 
 WARNING: Not all the information in the slides applies to this presentation.
-The content was kept (mostly) the same as the original template for comparison purposes.
+The content was kept (mostly) the same as in the original template for comparison purposes.
 
 == Highlights
 
