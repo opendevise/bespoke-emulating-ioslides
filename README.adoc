@@ -1,6 +1,25 @@
-= Bespoke.js Emulating ioslides
+= Bespoke.js Emulating ioslides (aka io-2012-slides)
 
 A http://markdalgleish.com/projects/bespoke.js[Bespoke.js] presentation that emulates the example presentation for https://code.google.com/p/io-2012-slides[ioslides].
+
+WARNING: Not all the information in the slides applies to this presentation.
+The content was kept (mostly) the same as the original template for comparison purposes.
+
+== Highlights
+
+Using Bespoke.js has the following advantages over the original ioslides presentation engine:
+
+* 14K of minified JavaScript down from > 70K in ioslides
+* 13K of minified CSS (generated from Stylus instead of Sass) down from 52K in ioslides
+* Semantic HTML generated from only 8K (< 200 lines) of AsciiDoc
+* Scales to fit any screen resolution (a major shortcoming of ioslides)
+* A more powerful and efficient overview mode
+* Configurable content builds
+* Ready to tap into the Bespoke.js https://www.npmjs.com/browse/keyword/bespoke-plugin[plugin ecosystem]
+
+No matter how you look at it, you'll be a 4x presenter!
+
+NOTE: Presenter mode will be available once integration with https://github.com/opendevise/bespoke-onstage[bespoke-onstage] is complete.
 
 == View slides locally
 
