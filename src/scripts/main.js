@@ -8,7 +8,7 @@ var isWebKit = 'webkitAppearance' in document.documentElement.style,
   bullets = require('bespoke-bullets'),
   classes = require('bespoke-classes'),
   //cursor = require('bespoke-cursor'),
-  forms = require('bespoke-forms'),
+  //forms = require('bespoke-forms'),
   fullscreen = require('bespoke-fullscreen'),
   hash = require('bespoke-hash'),
   nav = require('bespoke-nav'),
@@ -40,7 +40,9 @@ bespoke.from('.deck', [
   overview({ margin: 20 }),
   bullets('div.build, ul.build > li'),
   hash(),
-  forms(),
+  // enable forms() if you use form elements in your slides
+  //forms(),
+  // enable cursor() to hide the cursor when presenting
   //cursor(),
   function(deck) { setTimeout(function() { document.body.classList.add('loaded') }, 0); }
 ]);
