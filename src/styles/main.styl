@@ -206,10 +206,10 @@ pre
   h3
     line-height 2.8 
 
-.bespoke-slide.segue header, .tada
+.bespoke-slide.segue header, .bespoke-slide.closing > *, .tada
   opacity 0
   /.bespoke-active
-    &.segue header, .tada
+    &.segue header, &.closing > *, .tada
       opacity 1
       transition $transition-tada
 
@@ -459,13 +459,12 @@ b.button
 
 .bespoke-overview
   -ms-overflow-style none // hide visible scrollbar in IE 10+
-  &::-webkit-scrollbar // hide visible scrollbar in WebKit
-    width 0
+  &::-webkit-scrollbar { width: 0 } // hide visible scrollbar in WebKit
   .bespoke-slide-canvas
     display none
   .bespoke-slide
     border-radius 0
-    &.segue header, .tada
+    &.segue header, &.closing > *, .tada
       opacity 1
   //.bespoke-inactive
   //  opacity 0.5
@@ -485,5 +484,5 @@ b.button
 
 .bespoke-scale-parent
   //.bespoke-bullet-active,
-  .bespoke-slide, .bespoke-active.segue header, .bespoke-active .tada
+  .bespoke-slide, .bespoke-active.segue header, .bespoke-active.closing > *, .bespoke-active .tada
     webkit-transition-hack()
