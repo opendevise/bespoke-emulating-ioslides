@@ -1,6 +1,6 @@
 var isWebKit = 'webkitAppearance' in document.documentElement.style,
   // zoom-based scaling causes font sizes and line heights to be calculated differently
-  // zoom-based scaling correctly anti-aliases fonts during transforms (no need for the layer creation hack)
+  // on the other hand, zoom-based scaling correctly anti-aliases fonts during transforms (no need for layer creation hack)
   //scaleMethod = isWebKit ? 'zoom' : 'transform',
   scaleMethod = 'transform',
   //scaleMethod = null,
