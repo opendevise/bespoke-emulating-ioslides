@@ -1,5 +1,5 @@
 :title-opts: slice
-= A Demonstration of the{zwsp} ioslides Presentation Engine: As Emulated by Bespoke.js
+= A Demonstration of the{sp} ioslides Presentation Engine: As Emulated by Bespoke.js
 Author Name
 :position: Job Title
 :organization: ACME Inc.
