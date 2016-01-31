@@ -50,7 +50,7 @@ gulp.task('css', ['clean:css'], function() {
       'include css': true,
       paths: ['./node_modules', './bower_components']
     }))
-    .pipe(autoprefixer('last 2 versions', { map: false }))
+    .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
     .pipe(isDist ? csso() : through())
     .pipe(rename('build.css'))
     .pipe(gulp.dest('dist/build'))
@@ -104,7 +104,7 @@ gulp.task('watch', function() {
   ], ['js']);
 });
 
-gulp.task('deploy', ['build'], function(done) {
+gulp.task('deploy', ['clean', 'build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
