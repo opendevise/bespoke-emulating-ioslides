@@ -19,15 +19,12 @@ Author Name
 A list where items build:
 
 [%build]
---
-[%build]
 * Pressing kbd:[h] highlights code snippets
 * Pressing kbd:[p] toggles speaker notes (if they're on the current slide)
 * Pressing kbd:[f] toggles fullscreen viewing
 * Pressing kbd:[w] toggles widescreen
 * Pressing kbd:[o] toggles overview mode
 * Pressing kbd:[ESC] toggles off these goodies
---
 
 Another list, but items fade as they build:
 
@@ -158,7 +155,8 @@ I am centered text with a btn:[Button] and [.disabled]#btn:[Disabled]# button.
 == Segue Slide: Subtitle Placeholder
 
 == Full Image (with Optional Header)
-image::mountains.jpg[Mountains,1100,700,role=cover canvas,credit=unsplash.com/photos/PKVcQXEcfLU]
+image::mountains.jpg[Mountains,1100,700,role=cover canvas]
+
 [.credit.light]
 unsplash.com/photos/PKVcQXEcfLU
 

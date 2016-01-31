@@ -38,11 +38,18 @@ bespoke.from('.deck', [
     }
   },
   overview({ margin: 20 }),
-  bullets('div.build, ul.build > li'),
+  bullets('.build, .build-items > *:not(.build-items)'),
+  // ...or fuse the .build-items:not(.build) list with first item
+  //bullets([
+  //  '.build',
+  //  '.build-items.build > *:not(.build-items)',
+  //  '.build-items:not(.build)',
+  //  '.build-items:not(.build) > *:not(.build-items):not(:first-child)'].join(', ')
+  //),
   hash(),
-  // enable forms() if you use form elements in your slides
+  // enable forms() if you have form elements in your slides
   //forms(),
-  // enable cursor() to hide the cursor when presenting
+  // enable cursor() to automatically hide the cursor when presenting
   //cursor(),
   function(deck) { setTimeout(function() { document.body.classList.add('loaded') }, 0); }
 ]);
