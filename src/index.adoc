@@ -1,8 +1,8 @@
-:title-opts: slice
 = A Demonstration of the{sp} ioslides Presentation Engine: As Emulated by Bespoke.js
 Author Name
-:position: Job Title
 :organization: ACME Inc.
+:position: Job Title
+:header-opts: slice
 :imagesdir: images
 :sectids!:
 :experimental:
