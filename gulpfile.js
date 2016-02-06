@@ -31,6 +31,7 @@ var pkg = require('./package.json'),
     'drop-empty-elements': 'false',
     'fix-uri': 'false',
     'indent': 'false',
+    'literal-attributes': 'true',
     'newline': 'LF',
     'preserve-entities': 'true',
     'quiet': 'true',
@@ -60,8 +61,7 @@ gulp.task('html', ['clean:html'], function() {
     .pipe(exec('asciidoctor-bespoke -o - src/index.adoc', { pipeStdout: true }))
     .pipe(exec.reporter({ stdout: false }))
     .pipe(through(function(file) {
-      var html = file.contents.toString();
-      var html = tidy(html, tidyOpts) // NOTE based on tidy 4.9.26
+      var html = tidy(file.contents.toString(), tidyOpts) // NOTE based on tidy 4.9.26
         // strip extra newlines inside <pre> tags (fixed in tidy 5.1.2)
         .replace(new RegExp('<pre(.*?)>\\n([\\s\\S]*?)\\n</pre>', 'g'), '<pre$1>$2</pre>\n')
         // strip extra newline after <script> start tag for empty and single-line content
