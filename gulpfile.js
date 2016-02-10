@@ -27,6 +27,7 @@ var pkg = require('./package.json'),
     language_out: 'ES5'
   },
   tidyOpts = {
+    'anchor-as-name': 'false',
     'coerce-endtags': 'false',
     'drop-empty-elements': 'false',
     'fix-uri': 'false',
@@ -63,11 +64,11 @@ gulp.task('html', ['clean:html'], function() {
     .pipe(through(function(file) {
       var html = tidy(file.contents.toString(), tidyOpts) // NOTE based on tidy 4.9.26
         // strip extra newlines inside <pre> tags (fixed in tidy 5.1.2)
-        .replace(new RegExp('<pre(.*?)>\\n([\\s\\S]*?)\\n</pre>', 'g'), '<pre$1>$2</pre>\n')
+        .replace(new RegExp('<pre([^>]*)>\\n([\\s\\S]*?)\\n</pre>', 'g'), '<pre$1>$2</pre>\n')
         // strip extra newline after <script> start tag for empty and single-line content
         .replace(new RegExp('>\\n(?:(.+)\\n)?</script>', 'g'), '>$1</script>')
         // add newline before <script> tags
-        .replace(new RegExp('><script(.*?)>', 'g'), '>\n<script$1>');
+        .replace(new RegExp('><script([^>]*)>', 'g'), '>\n<script$1>');
       file.contents = new Buffer(html);
       this.push(file);
     }))
