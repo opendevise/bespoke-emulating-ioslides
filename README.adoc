@@ -9,8 +9,8 @@ The content was kept (mostly) the same as in the original template for compariso
 
 Using Bespoke.js has the following advantages over the original ioslides presentation engine:
 
-* 13.4K of minified JavaScript down from > 70K in ioslides
-  - 6.7K without overview mode
+* 13.9K of minified JavaScript down from > 70K in ioslides
+  - 7K without overview mode
 * 11.6K of minified CSS (generated from Stylus instead of Sass) down from 52K in ioslides
 * 16.4K of semantic HTML generated from only 4.6K (~ 180 lines) of link:src/index.adoc[AsciiDoc]
 * Scales to fit any screen resolution
