@@ -1,6 +1,21 @@
 {
   "name": "presentation-bespoke-emulating-ioslides",
-  "version": "1.1.1",
+  "version": "1.1.2",
+  "description": "A Bespoke.js presentation that emulates the example presentation for ioslides (io-2012-slides)",
+  "author": "Dan Allen",
+  "contributors": [
+    {
+      "name": "Eric Bidelman"
+    },
+    {
+      "name": "Luke Mahe"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opendevise/bespoke-emulating-ioslides"
+  },
   "dependencies": {},
   "devDependencies": {
     "bespoke": "^1.1.0",
