@@ -15,7 +15,7 @@ var isWebKit = 'webkitAppearance' in document.documentElement.style,
   overview = require('bespoke-overview'),
   scale = require('bespoke-scale');
 
-bespoke.from('.deck', [
+(window.bespoke = bespoke).deck = bespoke.from('.deck', [
   classes(),
   function(deck) {
     var slideCount = String(deck.slides.length);
